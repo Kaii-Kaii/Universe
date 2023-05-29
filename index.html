@@ -149,6 +149,62 @@
             renderer.render(scene, camera);
         });
     </script>
+    <div id="word1"></div>
+    <div id="word2"></div>
+    
+    <style>
+      #word1 {
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 1;
+        font-size: 6em;
+        color: #fc0;
+        -webkit-text-stroke: 0.25vh #c0f;
+        font-family: Megrim, cursive;
+      }
+    
+      #word2 {
+        position: absolute;
+        top: 55%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 1;
+        font-size: 4.5em;
+        color: #fc0;
+        -webkit-text-stroke: 0.2vh #c0f;
+        font-family: Megrim, cursive;
+      }
+    </style>
+    
+    <script>
+      const word1 = document.getElementById('word1');
+      const word2 = document.getElementById('word2');
+      const text1 = 'I LOVE YOU';
+      const text2 = 'IN EVERY UNIVERSE';
+      let i = 0;
+    
+      function typeWriter1() {
+        if (i < text1.length) {
+          word1.innerHTML += text1.charAt(i);
+          i++;
+          setTimeout(typeWriter1, 50);
+        } else {
+          setTimeout(typeWriter2, 1000); // Wait 1 second before starting the second typing animation
+        }
+      }
+    
+      function typeWriter2() {
+        if (i < (text1.length + text2.length)) {
+          word2.innerHTML += text2.charAt(i - text1.length);
+          i++;
+          setTimeout(typeWriter2, 50);
+        }
+      }
+    
+      setTimeout(typeWriter1, 1000); // Wait 1 second before starting the first typing animation
+    </script>
+    
 </body>
-
 </html>
